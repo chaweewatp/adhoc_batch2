@@ -43,8 +43,8 @@ jobs:
       - name: Prepare SSH Keys
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.PEAADHOC }}" > ~/.ssh/PEAADHOC.pem
-          chmod 600 ~/.ssh/PEAADHOC.pem
+          echo "${{ secrets.PEAADHOC }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           # cat "$SERVER_PUB_KEY" > ~/.ssh/known_hosts
           # chmod 600 ~/.ssh/known_hosts
 
@@ -54,7 +54,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           # key: ${{ secrets.PEAADHOC }}
-          key_path: ~/.ssh/PEAADHOC.pem
+          key_path: ~/.ssh/id_rsa
           port: 22
          
           script: |
