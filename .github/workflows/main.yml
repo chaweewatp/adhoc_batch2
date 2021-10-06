@@ -42,9 +42,12 @@ jobs:
           username: userX
           key: ${{ secrets.PEAADHOC }}
           port: 22
+          fingerprint: ${{ secrets.FINGERPRINT }}
           
           script: |
             whoami
+            ls -al
+
             echo "ssh success"            
 
 
