@@ -34,19 +34,24 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          
-      - name: deploy app
-        uses: appleboy/ssh-action@v0.1.2
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.PEAADHOC }}
-          key_path: ./PEAADHOC.pem
-          port: 22
+      - name: ssh to server
+        run: |
+        chmod 600 PEAADHOC.pem
+        ssh -i PEAADHOC.pem nc-user@139.5.145.108 
+        whoami
+
+      # - name: deploy app
+      #   uses: appleboy/ssh-action@v0.1.2
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USER }}
+      #     key: ${{ secrets.PEAADHOC }}
+      #     key_path: ./PEAADHOC.pem
+      #     port: 22
          
-          script: |
-            whoami
-            ls -al
+      #     script: |
+      #       whoami
+      #       ls -al
 
 
           
