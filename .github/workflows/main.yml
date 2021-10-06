@@ -55,7 +55,7 @@ jobs:
           command: ls -a
           host: 139.5.145.108
           username: nc-user
-          #passphrase: ${{ secrets.PASSPHRASE }}
+          passphrase: ""
           privateKey: ${{ secrets.PEAADHOC }}
           script: |
             whoami
