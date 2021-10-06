@@ -35,32 +35,32 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      #- name: deploy app
-      #  uses: appleboy/ssh-action@v0.1.2
-      #  with:
-      #    host: 139.5.145.108
-      #   username: user
-      #    key: ${{ secrets.PEAADHOC }}
-      #    port: 22
+      - name: deploy app
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: 139.5.145.108
+          username: nc-user
+          key: ${{ secrets.PEAADHOC }}
+          port: 22
       #    fingerprint: ${{ secrets.FINGERPRINT }}
       #    
-      #    script: |
-      #      whoami
-      #      ls -al
-#
- #           echo "ssh success"            
-      #- name: deploy app
-      - name: ls -a via ssh
-        uses: garygrossgarten/github-action-ssh@release
-        with:
-          command: ls -a
-          host: 139.5.145.108
-          username: user
-          #passphrase: ${{ secrets.PASSPHRASE }}
-          privateKey: ${{ secrets.PEAADHOC }}
           script: |
             whoami
             ls -al
+#
+ #           echo "ssh success"            
+      #- name: deploy app
+      #- name: ls -a via ssh
+      #  uses: garygrossgarten/github-action-ssh@release
+      #  with:
+      #    command: ls -a
+      #    host: 139.5.145.108
+      #    username: user
+          #passphrase: ${{ secrets.PASSPHRASE }}
+      #    privateKey: ${{ secrets.PEAADHOC }}
+      #    script: |
+      #      whoami
+      #      ls -al
           
 
 
