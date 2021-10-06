@@ -41,7 +41,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.PEAADHOC }}
-          key_path: ../PEAADHOC.pem
+          key_path: ./PEAADHOC.pem
           port: 22
          
           script: |
