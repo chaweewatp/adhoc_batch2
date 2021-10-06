@@ -68,14 +68,14 @@ jobs:
       - name: Prepare SSH Keys
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.PEAADHOC }}" > ~/.ssh/PEAADHOC.pem
-          chmod 600 ~/.ssh/PEAADHOC.PEM
+          echo "${{ secrets.PEAADHOC }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           # cat "$SERVER_PUB_KEY" > ~/.ssh/known_hosts
           # chmod 600 ~/.ssh/known_hosts
 
       - name: SSH to server
         run: |
-          ssh -i ~/.ssh/PEAADHOC.pem nc-user@139.5.145.108
+          ssh -i ~/.ssh/id_rsa nc-user@139.5.145.108
 
           
 
