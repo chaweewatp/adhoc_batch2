@@ -39,7 +39,7 @@ jobs:
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: 139.5.145.108
-          username: user
+          username: userX
           key: ${{ secrets.PEAADHOC }}
           port: 22
           
