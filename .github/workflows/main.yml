@@ -65,13 +65,13 @@ jobs:
       #     # Command to execute, Bash syntax
       #     command: whoami
 
-      # - name: Prepare SSH Keys
-      #   run: |
-      #     mkdir -p ~/.ssh
-      #     echo "${{ secrets.PEAADHOC }}" > ~/.ssh/PEAADHOC.pem
-      #     chmod 600 ~/.ssh/PEAADHOC.pem
-      #     # cat "$SERVER_PUB_KEY" > ~/.ssh/known_hosts
-      #     # chmod 600 ~/.ssh/known_hosts
+      - name: Prepare SSH Keys
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PEAADHOC }}" > ~/.ssh/PEAADHOC.pem
+          chmod 600 ~/.ssh/PEAADHOC.pem
+          # cat "$SERVER_PUB_KEY" > ~/.ssh/known_hosts
+          # chmod 600 ~/.ssh/known_hosts
 
       - name: SSH to server
         run: |
