@@ -34,11 +34,11 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: ssh to server
-        run: |
-        chmod 600 PEAADHOC.pem
-        ssh -i PEAADHOC.pem nc-user@139.5.145.108 
-        whoami
+      # - name: ssh to server
+      #   run: |
+      #   chmod 600 PEAADHOC.pem
+      #   ssh -i PEAADHOC.pem nc-user@139.5.145.108 
+      #   whoami
 
       # - name: deploy app
       #   uses: appleboy/ssh-action@v0.1.2
@@ -53,6 +53,17 @@ jobs:
       #       whoami
       #       ls -al
 
+      - name: kevin_leptons/ssh_action
+        # You may pin to the exact commit or the version.
+        # uses: kevin-leptons/ssh_action@f6a3f20fcc02928dbd96268bd206a5fd5917d868
+        uses: kevin-leptons/ssh_action@v1
+        with:
+          # URI refers to remote host like `user@host`
+          host: nc-user@139.5.145.108
+          # Private SSH key to authenticate
+          key: ${{ secrets.PEAADHOC }}
+          # Command to execute, Bash syntax
+          command: whoami
 
           
 
