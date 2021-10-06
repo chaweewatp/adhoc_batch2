@@ -52,7 +52,7 @@ jobs:
       - name: ls -a via ssh
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: ls -a
+          #command: ls -a
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           #passphrase: ${{ secrets.PASSPHRASE }}
@@ -60,6 +60,7 @@ jobs:
           script: |
             whoami
             ls -al
+            echo ${{ secrets.USER }}
           
 
 
