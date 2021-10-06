@@ -40,7 +40,7 @@ jobs:
         with:
           host: 139.5.145.108
           username: user
-          key: PEAADHOC.pem
+          key: ${{ secrets.PEAADHOC }}
           
           script: |
             echo "ssh success"            
