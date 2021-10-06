@@ -53,10 +53,10 @@ jobs:
         uses: garygrossgarten/github-action-ssh@release
         with:
           command: ls -a
-          host: 139.5.145.108
-          username: nc-user
-          passphrase: 
-          privateKey: ${{ secrets.PEAADHOC}}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          #passphrase: ${{ secrets.PASSPHRASE }}
+          privateKey: ${{ secrets.PEAADHOC }}
           script: |
             whoami
             ls -al
