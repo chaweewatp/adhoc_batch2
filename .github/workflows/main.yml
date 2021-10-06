@@ -41,8 +41,10 @@ jobs:
           host: 139.5.145.108
           username: user
           key: ${{ secrets.PEAADHOC }}
+          port: 22
           
           script: |
+            whoami
             echo "ssh success"            
 
 
