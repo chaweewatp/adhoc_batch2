@@ -40,18 +40,27 @@ jobs:
       #   ssh -i PEAADHOC.pem nc-user@139.5.145.108 
       #   whoami
 
-      # - name: deploy app
-      #   uses: appleboy/ssh-action@v0.1.2
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USER }}
-      #     key: ${{ secrets.PEAADHOC }}
-      #     key_path: ./PEAADHOC.pem
-      #     port: 22
+      - name: Prepare SSH Keys
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PEAADHOC }}" > ~/.ssh/PEAADHOC.pem
+          chmod 600 ~/.ssh/PEAADHOC.pem
+          echo ${{ secrets.PEAADHOC }}
+          # cat "$SERVER_PUB_KEY" > ~/.ssh/known_hosts
+          # chmod 600 ~/.ssh/known_hosts
+
+      - name: deploy app
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          # key: ${{ secrets.PEAADHOC }}
+          key_path: ~/.ssh/PEAADHOC.pem
+          port: 22
          
-      #     script: |
-      #       whoami
-      #       ls -al
+          script: |
+            whoami
+            ls -al
 
       # - name: kevin_leptons/ssh_action
       #   # You may pin to the exact commit or the version.
@@ -65,19 +74,12 @@ jobs:
       #     # Command to execute, Bash syntax
       #     command: whoami
 
-      - name: Prepare SSH Keys
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.PEAADHOC }}" > ~/.ssh/PEAADHOC.pem
-          chmod 600 ~/.ssh/PEAADHOC.pem
-          cat ~/.ssh/PEAADHOC.pem
-          # cat "$SERVER_PUB_KEY" > ~/.ssh/known_hosts
-          # chmod 600 ~/.ssh/known_hosts
+      
 
-      - name: SSH to server
-        run: |
+      # - name: SSH to server
+      #   run: |
 
-          ssh -i ~/.ssh/PEAADHOC.pem nc-user@139.5.145.108
+      #     ssh -i ~/.ssh/PEAADHOC.pem nc-user@139.5.145.108
 
           
 
